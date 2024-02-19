@@ -25,13 +25,13 @@
 * If the applications are own applictions , it is better to use the Onpremise 
 * If you are providing some service to the application , it is better to go with Cloud.
 
-# Amazon.in -- Onpremise 
+# Onpremise 
 1. Security 
 2. More efficient in the long run 
 
 
 # Cloud -- not your  own applications :
-1. Tt is better to go with cloud provider to avoid initial cost 
+1. it is better to go with cloud provider to avoid initial cost 
 
 
 # AWS free tier account :
@@ -90,8 +90,5 @@
 
 
 # Assignment :
-==============
 * Create a AWS free tier Account -- https://youtu.be/fyNIqbQNva0?si=Fx3Kqn8IeCRELNLn 
-
-
 
