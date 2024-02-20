@@ -30,7 +30,9 @@ ssh username@ipaddress
 * Defaultgateway - Modemip - 192.168.0.1
 * ipv4 address - Private IP -  192.168.0.233
 * Public IP - 103.95.173.231
-* Till 1995 we have only public ips 
+* When found that Ips are going to exhaust , then they came up with a concept of NAT (Network Address Translation)
+* Modem will assign the private IP to the devices in the network 
+
 
 # Kinds of Authentication:
 1. PasswordBased - username & password 
@@ -65,4 +67,4 @@ ssh username@ipaddress
 * find <pathtofind> -name <filename>
 
 # Assignment:
-* Look at  how vi editor works in linux 
+* Look at how vi editor works in linux 
