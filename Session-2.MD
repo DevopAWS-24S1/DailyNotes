@@ -24,6 +24,11 @@ ssh username@ipaddress
 * Ubuntu - default user created by AWS 
 * ec2-35-172-211-1.compute-1.amazonaws.com - a name give by the AWS for the server instead of ip address 
 
+
+# Kinds of Authentication:
+1. Password Based - username & password 
+2. keybased/ passwordlesss  -- key based files to connect to the server 
+
 # Connect to the server :
 * Laptop - Username/password 
 * Server from your laptop -- username / password / ipaddress
@@ -34,14 +39,10 @@ ssh username@ipaddress
 * Modem will assign the private IP to the devices in the network 
 
 
-# Kinds of Authentication:
-1. PasswordBased - username & password 
-2. keybased/ passwordlesss  -- key based files to connect to the server 
-
-
-# How internet works :
+# How internet works & PublicIP Vs PrivateIP:
 * Amazon.in 
 *when you hit Amazon.in in your laptop >> it will contact ISP to get the ip(ISP is responsible for providing IP) >> Modem checks is that ip is in your network/home..? >> modem goes to ISP and check if that ip is there in the BSNL ISP >> BSNL ISP goes to Peering point/Exchange point(It is point wwhere all the networks are connected) >> fibre exchange point in India to connect to the world (Mumbai,chennai,kerala)>> US fibre excahnge point >>ISP >> Modem >> Amazon.in server
+
 
 
 # CRUD operations:
