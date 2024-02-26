@@ -91,7 +91,7 @@ other - o
 4. ServiceManagement
 5. Networkmanagement
 
-## UserManagement
+## 1. UserManagement
 * adduser username >> user creation
 * passwd username >> reset the password , but you should in root to do it 
 * By default AWS servers comes with password based authentication disabled .
