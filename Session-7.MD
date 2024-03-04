@@ -5,6 +5,7 @@
 * git branch -r >> list remote repo branches 
 
 # Push the company-x branch to remote repo:
+
 ```
 git checkout company-x
 git push origin company-x
@@ -22,6 +23,7 @@ git push origin company-y
 * git push origin -D branchname >>  force deleted
 
 # Git tracks the removal/deletion of file as well
+
 ```
 rm pull
 git status 

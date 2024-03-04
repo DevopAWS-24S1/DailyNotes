@@ -24,7 +24,7 @@
 * git remote set-url origin <repourl>
 
 # untracked and modified files in git :
-* Modified file - The files is already present and you have mae some changes to it 
+* Modified file - The files is already present and you have made some changes to it 
 * Untracked file - It is the brand new file created 
 
 ```
@@ -40,6 +40,7 @@ git add --all
 # Authentication Troubleshoot:
 * Username & password will be stored in the credential manager >> Windows credentials
 * SHH and GPG keys in the Github UI 
+
 
 # Tracking changes & Travel back to the history 
 * How to see the changes made to the local repo :
