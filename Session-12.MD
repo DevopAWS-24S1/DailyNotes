@@ -6,6 +6,7 @@
    echo "Script name: $0"
    echo "All arguments: $@"
    echo " Last command status: $?"
+   ```
 
 
 ```
@@ -21,6 +22,8 @@ echo "All arguments: $@"
 echo " Last command status: $?"
 
 ```
+
+
 
 # Operators : 
 
