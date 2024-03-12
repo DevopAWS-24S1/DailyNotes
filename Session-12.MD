@@ -158,7 +158,7 @@ fi
 ```
 
 
-# Improvise te above script :
+# Improvise the above script :
 * logging mechanism 
 * route those logs to the file 
 * Error checking mechanism 
