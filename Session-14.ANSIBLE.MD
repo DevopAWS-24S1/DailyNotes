@@ -24,24 +24,43 @@
 ```
 sudo su - 
 adduser devops
-
-visudo 
 ```
+
+* visudo 
+
+```
+# Allow members of group sudo to execute any command
+%sudo   ALL=(ALL:ALL) ALL
+%devops ALL=(ALL:ALL) NOPASSWD:ALL
+
+```
+
 ##  Step-2: Create user on the Ansible Node & provide sudo access
 
 ```
 sudo su - 
 adduser devops
+```
 
-visudo 
-``` 
+* visudo 
+
+```
+# Allow members of group sudo to execute any command
+%sudo   ALL=(ALL:ALL) ALL
+%devops ALL=(ALL:ALL) NOPASSWD:ALL
+
+```
 
 ##  Step-3: Password Authentication enabled on both the Ansible server & Ansible server 
 
 ```
 vi /etc/ssh/sshd_config
 
-* loook for PasswordAuthentication yes
+* loook for 
+```
+PasswordAuthentication yes
+
+```
 
 sudo service sshd restart
 
