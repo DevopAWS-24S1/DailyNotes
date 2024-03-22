@@ -149,7 +149,7 @@ ansible -i hosts -m ping all
 
 * Syntax:
 ```
-"{ package_name }"
+"{{ package_name }}"
 ```
 
 * DRY and also for reusing your scripts 
@@ -175,7 +175,7 @@ ansible -i hosts -m ping all
 3.91.201.4
 
 # This is defining at group level 
-[appserver]
+[appserver:vars]
 package_name=tomcat9
 
 [dbserver]
@@ -193,7 +193,7 @@ package_name=tomcat9
   tasks:
     - name : Install software 
       apt:
-        name: "{ package_name }"
+        name: "{{ package_name }}"
         state: present
         update_cache: yes
 ```
@@ -211,7 +211,7 @@ package_name=tomcat9
   tasks:
     - name : Install software 
       apt:
-        name: "{ package_name }"
+        name: "{{ package_name }}"
         state: present
         update_cache: yes
 ```
