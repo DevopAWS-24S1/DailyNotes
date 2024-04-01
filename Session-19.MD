@@ -1,21 +1,126 @@
-Static and dynamic websites are two different types of web pages based on how their content is generated and served to users:
+# Playbook to install apache2 in the both CentOS and Debian flavors:
+* To install apache2 on centos :
 
-1. **Static Websites:**
-   - Static websites contain fixed content that does not change unless manually updated by a developer.
-   - Content on static websites is typically written in HTML and CSS, and possibly JavaScript for interactivity.
-   - Each page is a separate HTML file stored on the web server.
-   - Changes to the content require direct modification of the HTML files.
-   - Examples of static websites include personal blogs, small business websites, and informational websites.
-   - Advantages: They are easy to create, cost-effective, and fast to load since the content is pre-rendered.
-   - Disadvantages: Limited interactivity and customization without development skills, and managing large amounts of content can become cumbersome.
+```
+yum install httpd 
+```
 
-2. **Dynamic Websites:**
-   - Dynamic websites generate content dynamically based on user interactions, database queries, or other external data sources.
-   - Content on dynamic websites can change based on user input, database updates, or real-time data.
-   - Pages are usually created using server-side scripting languages like PHP, Python, Ruby, or Node.js, along with databases like MySQL, PostgreSQL, or MongoDB.
-   - Content is often retrieved from databases, APIs, or other external sources and assembled on-the-fly to create the page.
-   - Examples of dynamic websites include social media platforms, e-commerce websites, forums, and web applications.
-   - Advantages: Greater flexibility and interactivity, easier content management through CMS (Content Management Systems), and scalability for handling large amounts of data.
-   - Disadvantages: Higher development complexity, potentially slower loading times due to dynamic content generation, and increased server resources required.
+* To install apache2 on ubuntu :
 
-In summary, static websites are simpler and consist of fixed content, while dynamic websites are more complex and can generate content dynamically based on various factors. The choice between static and dynamic depends on the specific requirements of the website and the desired functionality.
+```
+apt install apache2 
+```
+
+```
+---
+- hosts: all
+  become: yes 
+  tasks:
+    - name: Installing Apache2 on Debian flavour
+      apt:
+        name: apache2
+        state: present
+        update_cache: yes
+      when: ansible_facts['os_family'] == "Debian"
+    - name: Instaling Apachee2 on RedHat flavour
+      yum:
+        name: httpd
+        state: present
+        update_cache: yes
+      when: ansible_facts['os_family'] == "RedHat"
+```
+
+# Package module to install apache2 in both CentOS and Debian flavors:
+
+```
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Installing Apache on Debian flavour 
+      package:
+        name: apache2
+        state: present 
+    - name: Installing apache on Redhat Flavour 
+      package:
+        name: httpd
+        state: present
+```
+
+
+# Fail module in ansible 
+
+
+```
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: fail if the os is other than the debian
+      fail:
+        msg: the playbook run only for the debian os
+      when: ansible_facts['os_family'] != "Debian"
+    - name: installing apache2
+      apt:
+        name: apache2
+        state: present
+        update_cache: yes
+      when: ansible_facts['os_family'] == "Debian"
+      
+```
+
+
+# Handler : 
+* It is similar to the function we practiced in the shell script 
+* Function calling >> Write a function >> We call the funtion whenever it is needed
+* Using same task multiple times in your playbook , you can write a handler and call the handler when ever you need it .
+
+```
+---
+- hosts: all
+  become: yes 
+  tasks:
+  handlers:
+    - name: Restart apache2
+      service:
+        name: apache2
+        state: restarted
+    - name: Calling handler
+      notify: 
+        - Restart apache2
+```
+
+
+
+```
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: installing apache2
+      apt:
+        name: apache2
+        state: present
+        update_cache: yes
+      notify:
+      - restart apache2
+    handlers:
+      - name: restart apache2 
+        service:
+          name: apache2
+          enabled: yes 
+          state: restarted
+```
+# Static Websites & Dynamic Websites 
+## Static Websites:
+* Ex: - Personal blogs , Tour package sites 
+* Static websites contains the fixed content that doesnot change untill manually updated by the developer 
+* Typically these are developed in HTML , CSS, Java scripting
+* Very easy to create and handle
+
+
+## Dynamic Websites:
+* Ex: Amazon , flipkart , e-commerce sites 
+* Dynamic websites generate content based on the user interactions , database or other external data sources 
+* Three tier  applications >> Web Tier >> App Tier >> DB Tier 
+* Little hard to create and hande
