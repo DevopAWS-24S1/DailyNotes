@@ -203,3 +203,6 @@ EXPOSE 8080
 CMD ["catalina.sh", "run"] 
 
 ```
+
+* Docker swarm - Orchestration 
+* volumes in Docker 
