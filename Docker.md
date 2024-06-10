@@ -137,3 +137,69 @@ docker run -d imagename
 ```
 docker run exec -it containername/containeris /bin/bash
 ```
+
+
+# Install docker on EC2 :
+* Install docker by usg script :
+
+```
+1. download the script
+#
+#   $ curl -fsSL https://get.docker.com -o install-docker.sh
+#
+# 2. verify the script's content
+#
+#   $ cat install-docker.sh
+#
+# 3. run the script with --dry-run to verify the steps it executes
+#
+#   $ sh install-docker.sh --dry-run
+#
+# 4. run the script either as root, or using sudo to perform the installation.
+#
+#   $ sudo sh install-docker.sh
+```
+
+# Portfowarding:
+* By using portforwarding we can access the application running in the container .
+
+```
+docker run -d -P imagename
+docker run -d -p <nodeport>:<conatinerport> imagename
+docker run -d -p 8005:8080 tomcat
+```
+
+# Document steps on VM :
+* Take VM 
+* Install java 
+* Install tomcat 
+* copy the code from local to the server(.wwar >> /var/lib/tomat8/webapps)
+* restart the tomacat 
+* publicip:8080
+
+# docker steps :
+* Dockerfile
+    * baseimage : ubuntu 
+    * install java 
+    * install tomcat 
+    * copy the war file to the image 
+    * restart the tomcat when it is converted in to container
+* convert the dockerfile to the image and run the container container
+
+
+* Dockerfile
+    * baseimage : tomcat 
+    * copy the war file to the image 
+    * restart the tomcat when it is converted in to container
+* convert the dockerfile to the image and run the container container
+
+# Dockerfile for sampledeployment :
+
+```
+FROM tomcat:9
+LABEL Author="surya"
+ADD https://tomcat.apache.org/tomcat-7.0-doc/appdev/sample/sample.war /usr/local/tomcat/webapps/
+EXPOSE 8080
+CMD ["catalina.sh", "run"] 
+
+```
